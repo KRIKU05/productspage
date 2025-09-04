@@ -1,0 +1,13 @@
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-image: url("daylight.jpg ");
+    opacity: 0.8;
+}
+#ban{
+  width: 100%;
+  height: 730px;
+  object-fit: cover;
+  object-position: center center;
+  opacity: 0.8;
+}
+
