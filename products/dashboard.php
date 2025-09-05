@@ -20,6 +20,14 @@ $stmt = $conn->prepare("SELECT COUNT(name) AS count_products FROM products;");
     $result = $stmt->get_result();
     $row_users = $result->fetch_assoc();
 
+
+ $stmt = $conn->prepare("SELECT COUNT(name) AS count_countries FROM country;");
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row_countries = $result->fetch_assoc();
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,6 +68,19 @@ $stmt = $conn->prepare("SELECT COUNT(name) AS count_products FROM products;");
                     </div>
                 </a>
             </div>
+
+            <div class="col-md-5 col-lg-4">
+                <a href="country.php" class="text-decoration-none text-dark">
+                    <div class="card shadow rounded-4 h-100">
+                        <div class="card-body d-flex flex-column align-items-center text-center">
+                            <h3 class="card-title mb-3">Countries</h3>
+                            <p class="fs-4 fw-bold mb-4">Total Countries: <?php echo $row_countries['count_countries']; ?></p>
+                            <img src="india.png" alt="Users" class="img-fluid" style="max-height: 180px;" />
+                        </div>
+                    </div>
+                </a>
+            </div>
+
         </div>
     </div>
 

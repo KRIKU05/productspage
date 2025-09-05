@@ -46,6 +46,12 @@ $current_user = $_SESSION['user'];
                 <li class="nav-item">
                     <a class="nav-link" href="user.index.php">Users</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="country.php">Countries</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="cities.php">Cities</a>
+</li>
             </ul>
 
 
