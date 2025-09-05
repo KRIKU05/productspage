@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("siss", $name, $phone, $email, $password);
 
         if ($stmt->execute()) {
-            header("Location: index.php");
+            header("Location: login.php");
             exit;
         } else {
             echo "Error: " . $stmt->error;
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Contact Me</title>
+    <title>Register</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -66,9 +66,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <?php if (isset($errors['password'])) echo "<small class='text-danger'>{$errors['password']}</small>"; ?>
             </div>
 
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-            </div>
+
+            <div class="row">
+            <div class="col-6"><a href="login.php"><button type="button" class="btn btn-primary w-100">Sign in</button></a></div>
+            <div class="col-6"><button type="submit" class="btn btn-primary w-100">Sign up</button></div>
+           
+        </div>
         </form>
     </div>
 </div>

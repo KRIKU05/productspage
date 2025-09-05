@@ -61,8 +61,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" required placeholder="Enter your password">
             </div>
-
-            <button type="submit" class="btn btn-primary w-100">Login</button>
+<div class="row">
+    <div class="col-6"><a href="register.php"><button type="button" class="btn btn-primary w-100">Sign up</button></a></div>
+            <div class="col-6"><button type="submit" class="btn btn-primary w-100">Sign in</button></div>
+            
+        </div>
         </form>
     </div>
 </div>

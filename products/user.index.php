@@ -1,8 +1,15 @@
 <?php
+
+session_start();
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+    exit();
+}
+
 include "db.php";
 include 'header.php';
 
-$stmt = $conn->prepare("SELECT * FROM users;");
+$stmt = $conn->prepare("SELECT * FROM users;"); 
 $stmt->execute();
 $result = $stmt->get_result();
 ?>
@@ -31,6 +38,7 @@ $result = $stmt->get_result();
                 <th>Name</th>
                 <th>Number</th>
                 <th>Email</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -40,6 +48,10 @@ $result = $stmt->get_result();
                 <td><?= $row['name']; ?></td>
                 <td><?= $row['number'] ?></td>
                 <td><?= $row['email'] ?></td>
+                  <td>
+                    <a href="user.edit.php?id=<?= $row['id']; ?>" class="btn btn-primary btn-sm">Edit</a>
+                    <a href="user.view.php?id=<?= $row['id']; ?>" class="btn btn-info btn-sm">View</a>
+                </td>
             </tr>
         <?php } ?>
         </tbody>

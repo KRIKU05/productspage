@@ -1,4 +1,13 @@
 <?php
+
+session_start();
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+    exit();
+}
+
+include "db.php";
+include "header.php";
 $name = $phone = $email = $password = "";
 $errors = [];
 
@@ -38,11 +47,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Contact Me</title>
+    <title>New user</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="card mx-auto mt-5 w-50 p-5 text-bg-dark rounded">
+<div class="card mx-auto mt-5 w-50 p-5 rounded">
     <h1 class="text-center">Create Account</h1>
     <div class="card-body">
         <form method="post" action="">
