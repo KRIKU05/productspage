@@ -8,6 +8,7 @@ if (!isset($_SESSION['user'])) {
 include "db.php";
 include 'header.php';
 
+
 $stmt = $conn->prepare("SELECT * FROM country;");
 $stmt->execute();
 $result = $stmt->get_result();
@@ -17,8 +18,16 @@ if (isset($_POST['submit'])) {
     $country_id = $_POST['country_id'];
     $status = $_POST['status'];
 
-    $insert = $conn->prepare("INSERT INTO city (name, country_id, status) VALUES (?, ?, ?)");
-    $insert->bind_param("sii", $name, $country_id, $status);
+
+    $stmtCountry = $conn->prepare("SELECT name FROM country WHERE id = ?");
+    $stmtCountry->bind_param("i", $country_id);
+    $stmtCountry->execute();
+    $stmtCountry->bind_result($country_name);
+    $stmtCountry->fetch();
+    $stmtCountry->close();
+
+    $insert = $conn->prepare("INSERT INTO city (name, country_id, status, country) VALUES (?, ?, ?, ?)");
+    $insert->bind_param("siis", $name, $country_id, $status, $country_name);
 
     if ($insert->execute()) {
         header("Location: cities.php");
@@ -58,7 +67,7 @@ if (isset($_POST['submit'])) {
                             <option value="">Select Country</option>
                             <?php foreach ($result as $country): ?>
                                 <option value="<?php echo $country['id']; ?>">
-                                    <?php echo htmlspecialchars($country['name']); ?>
+                                    <?php echo ($country['name']); ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>

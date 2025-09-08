@@ -8,9 +8,35 @@ if (!isset($_SESSION['user'])) {
 
 include "db.php";
 include 'header.php';
-$stmt = $conn->prepare("SELECT * FROM city;"); 
+
+$limit = 5;
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+if ($page < 1) $page = 1;
+
+$offset = ($page - 1) * $limit;
+
+$totalResult = mysqli_query($conn, "SELECT COUNT(*) AS total FROM city");
+$totalRows   = mysqli_fetch_assoc($totalResult)['total'];
+$totalPages  = ceil($totalRows / $limit);
+
+
+$sql = "SELECT * FROM city ORDER BY id ASC LIMIT $offset, $limit";
+$result = mysqli_query($conn, $sql);
+
+// $stmt = $conn->prepare("SELECT * FROM city;"); 
+// $stmt->execute();
+// $result = $stmt->get_result();
+
+$stmt = $conn->prepare("SELECT * FROM country;");
 $stmt->execute();
-$result = $stmt->get_result();
+$country = $stmt->get_result();
+
+$showcountry = [];
+while ($c = mysqli_fetch_assoc($country)) {
+    $showcountry[$c['id']] = $c['name'];
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,6 +61,7 @@ $result = $stmt->get_result();
         <thead class="table-dark">
             <tr>
                 <th>Id</th>
+                <th>Country</th>
                 <th>Name</th>
                 <th>Status</th>
                 <th>Actions</th>
@@ -44,6 +71,7 @@ $result = $stmt->get_result();
         <?php while ($row = mysqli_fetch_assoc($result)) { ?>
             <tr>
              <td><?= $row['id']; ?></td>
+                <td><?= $showcountry[$row['country_id']] ?></td>
                 <td><?= $row['name']; ?></td>
                 <td><?= $row['status'] == 1 ? 'Active' : 'Inactive'; ?></td>
                 <td>
@@ -56,6 +84,27 @@ $result = $stmt->get_result();
     </table>
 
     </div>
+
+<nav class="d-flex justify-content-between align-items-center">
+  <ul class="pagination mb-0">
+    <li class="page-item <?php if ($page <= 1) echo 'disabled'; ?>">
+      <a class="page-link" href="?page=<?= $page-1; ?>">Previous</a>
+    </li>
+
+    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+      <li class="page-item <?= ($i == $page) ? 'active' : '' ?>">
+        <a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a>
+      </li>
+    <?php endfor; ?>
+
+    <li class="page-item <?php if ($page >= $totalPages) echo 'disabled'; ?>">
+      <a class="page-link" href="?page=<?= $page+1; ?>">Next</a>
+    </li>
+  </ul>
+
+   <a href="dashboard.php" class="btn btn-secondary">Back</a>
+</nav>
+    
 </div>
 
 </body>

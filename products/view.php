@@ -22,14 +22,21 @@ $row = $result->fetch_assoc();
 <body class="bg-light">
 
 <div class="container mt-5">
-    <div class="card shadow p-3">
-        <h2 class="mb-3">Product Details</h2>
-        <p><strong>ID:</strong> <?php echo $row['id']; ?></p>
+    <div class="card">
+        <div class="card-header bg-dark text-white">
+            <div class="d-flex justify-content-between align-items-center">
+            <h4>View Product</h4>
+            <a href="index.php" class="btn btn-secondary">Back</a>
+</div>
+        </div>
+        <div class="card-body">
+           <p><strong>ID:</strong> <?php echo $row['id']; ?></p>
         <p><strong>Name:</strong> <?php echo $row['name']; ?></p>
         <p><strong>Status:</strong> <?php echo ($row['status'] ? 'Active' : 'Inactive'); ?></p>
-        <a href="index.php" class="btn btn-secondary">Back</a>
+        </div>
     </div>
 </div>
+
 
 </body>
 </html>

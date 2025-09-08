@@ -21,18 +21,26 @@ $row = $result->fetch_assoc();
 </head>
 <body class="bg-light">
 
+
+
 <div class="container mt-5">
-    <div class="card shadow p-3">
-        <h2 class="mb-3">Country Details</h2>
-        <p><strong>ID:</strong> <?php echo $row['id']; ?></p>
+    <div class="card">
+        <div class="card-header bg-dark text-white">
+            <div class="d-flex justify-content-between align-items-center">
+            <h4>View Country</h4>
+            <a href="country.php" class="btn btn-secondary">Back</a>
+</div>
+        </div>
+        <div class="card-body">
         <p><strong>Name:</strong> <?php echo $row['name']; ?></p>
         <p><strong>Status:</strong> <?php echo ($row['status'] ? 'Active' : 'Inactive'); ?></p>
         <p><strong>Flag: </strong>
        <img src ="images/<?= $row['flag']; ?>" style="height:100px; width:100px; "></p>
-
-        <a href="country.php" class="btn btn-secondary">Back</a>
+        </div>
     </div>
 </div>
+
+
 
 </body>
 </html>

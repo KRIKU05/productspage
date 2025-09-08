@@ -9,9 +9,23 @@ if (!isset($_SESSION['user'])) {
 include "db.php";
 include 'header.php';
 
-$stmt = $conn->prepare("SELECT * FROM users;"); 
-$stmt->execute();
-$result = $stmt->get_result();
+$limit = 5;
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+if ($page < 1) $page = 1;
+
+$offset = ($page - 1) * $limit;
+
+$totalResult = mysqli_query($conn, "SELECT COUNT(*) AS total FROM users");
+$totalRows   = mysqli_fetch_assoc($totalResult)['total'];
+$totalPages  = ceil($totalRows / $limit);
+
+
+$sql = "SELECT * FROM users ORDER BY id ASC LIMIT $offset, $limit";
+$result = mysqli_query($conn, $sql);
+
+// $stmt = $conn->prepare("SELECT * FROM users;"); 
+// $stmt->execute();
+// $result = $stmt->get_result();
 ?>
 
 <!DOCTYPE html>
@@ -58,6 +72,30 @@ $result = $stmt->get_result();
     </table>
 
     </div>
+
+
+<nav class="d-flex justify-content-between align-items-center">
+  <ul class="pagination mb-0">
+    <li class="page-item <?php if ($page <= 1) echo 'disabled'; ?>">
+      <a class="page-link" href="?page=<?= $page-1; ?>">Previous</a>
+    </li>
+
+    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+      <li class="page-item <?= ($i == $page) ? 'active' : '' ?>">
+        <a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a>
+      </li>
+    <?php endfor; ?>
+
+    <li class="page-item <?php if ($page >= $totalPages) echo 'disabled'; ?>">
+      <a class="page-link" href="?page=<?= $page+1; ?>">Next</a>
+    </li>
+  </ul>
+
+   <a href="dashboard.php" class="btn btn-secondary">Back</a>
+</nav>
+    
+
+
 </div>
 
 </body>

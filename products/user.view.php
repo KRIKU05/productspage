@@ -29,21 +29,25 @@ if ($result->num_rows > 0) {
 </head>
 <body class="bg-light">
 
-<div class="container mt-5">
-    <div class="card shadow p-3">
-        <h2 class="mb-3">User Details</h2>
 
-        <div class='mb-4'>
-            <p><strong>ID:</strong> <?= $user['id'] ?></p>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-dark text-white">
+            <div class="d-flex justify-content-between align-items-center">
+            <h4>View Users</h4>
+            <a href="user.index.php" class="btn btn-secondary">Back</a>
+</div>
+        </div>
+        <div class="card-body">
             <p><strong>Name:</strong> <?= $user['name'] ?></p>
             <p><strong>Phone number:</strong> <?= $user['number'] ?></p>
             <p><strong>Email:</strong> <?= $user['email']?></p>
  
         </div>
-
-        <a href="dashboard.php" class="btn btn-secondary">Back</a>
     </div>
 </div>
+
+
 
 </body>
 </html>

@@ -7,7 +7,7 @@ if (!isset($_SESSION['user'])) {
 
 include 'db.php';
 include 'header.php';
-$limit = 4;
+$limit = 5;
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 if ($page < 1) $page = 1;
 
@@ -29,9 +29,10 @@ $result = mysqli_query($conn, $sql);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
-<br>
+
 <div class="container mt-5">
-    <div class="d-flex justify-content-between align-items-center">
+    <div class="card shadow p-3">
+       <div class="d-flex justify-content-between align-items-center">
         <h1 class=" flex-grow-1">Products</h1>
         <a href="create.php" class="btn btn-success">Create New</a>
         <!-- <a href="logout.php" class="btn btn-danger">Logout</a> -->
@@ -80,7 +81,7 @@ $result = mysqli_query($conn, $sql);
 
   <a href="dashboard.php" class="btn btn-secondary">Back</a>
 </nav>
-    
+    </div>
 </div>
       
 </body>

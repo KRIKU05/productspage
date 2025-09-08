@@ -12,6 +12,12 @@ $stmt = $conn->prepare("SELECT * FROM country;");
 $stmt->execute();
 $countries = $stmt->get_result(); 
 
+$stmt = $conn->prepare("SELECT * FROM country;");
+$stmt->execute();
+$result = $stmt->get_result();
+
+
+
 $id = $_GET['id'];
 $cityResult = $conn->query("SELECT * FROM city WHERE id=$id");
 $product = $cityResult->fetch_assoc();
@@ -55,16 +61,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
               
                 <div class="mb-3">
-                    <label class="form-label">Country</label>
-                    <select name="country_id" class="form-select" required>
-                        <option value="">Select Country</option>
-                        <?php while($row_city = $countries->fetch_assoc()): ?>
-                            <option value="<?= $row_city['id']; ?>" 
-                                <?= ($row_city['id'] == $product['country_id']) ? 'selected' : '' ?>>
-                                <?= ($row_city['name']); ?>
-                            </option>
-                        <?php endwhile; ?>
-                    </select>
+                        <label class="form-label">Country</label>
+                        <select name="country_id" class="form-select" required>
+                            <option value="">Select Country</option>
+                            <?php foreach ($result as $country): ?>
+                                <option value="<?php echo $country['id']; ?>">
+                                    <?php echo ($country['name']); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+
                 </div>
 
             
