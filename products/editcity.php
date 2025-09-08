@@ -10,13 +10,7 @@ include 'header.php';
 
 $stmt = $conn->prepare("SELECT * FROM country;");
 $stmt->execute();
-$countries = $stmt->get_result(); 
-
-$stmt = $conn->prepare("SELECT * FROM country;");
-$stmt->execute();
-$result = $stmt->get_result();
-
-
+$result = $stmt->get_result(); 
 
 $id = $_GET['id'];
 $cityResult = $conn->query("SELECT * FROM city WHERE id=$id");
@@ -59,27 +53,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                            value="<?= ($product['name']); ?>" required>
                 </div>
 
-              
+         
                 <div class="mb-3">
-                        <label class="form-label">Country</label>
-                        <select name="country_id" class="form-select" required>
-                            <option value="">Select Country</option>
-                            <?php foreach ($result as $country): ?>
-                                <option value="<?php echo $country['id']; ?>">
-                                    <?php echo ($country['name']); ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-
+                    <label class="form-label">Country</label>
+                    <select name="country_id" class="form-select" required>
+                        <option value="">Select Country</option>
+                        <?php foreach ($result as $country): ?>
+                            <option value="<?= $country['id']; ?>" 
+                                <?= ($product['country_id'] == $country['id']) ? 'selected' : ''; ?>>
+                                <?= $country['name']; ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
 
-            
+         
                 <div class="mb-3">
                     <label>Status</label><br>
-                    <input type="radio" name="status" value="1" <?= ($product['status']==1) ? "checked" : ""; ?>> Active
-                    <input type="radio" name="status" value="0" <?= ($product['status']==0) ? "checked" : ""; ?>> Inactive
+                    <input type="radio" name="status" value="1" 
+                        <?= ($product['status']==1) ? "checked" : ""; ?>> Active
+                    <input type="radio" name="status" value="0" 
+                        <?= ($product['status']==0) ? "checked" : ""; ?>> Inactive
                 </div>
+                
 
+            
                 <button type="submit" class="btn btn-success">Update</button>
             </form>
         </div>

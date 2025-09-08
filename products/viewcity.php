@@ -32,6 +32,7 @@ $row = $result->fetch_assoc();
         </div>
         <div class="card-body">
         <p><strong>Name:</strong> <?php echo $row['name']; ?></p>
+        <p><strong>Country:</strong> <?php echo $row['country'];?></p>
         <p><strong>Status:</strong> <?php echo ($row['status'] ? 'Active' : 'Inactive'); ?></p>
         </div>
     </div>

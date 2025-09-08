@@ -27,6 +27,11 @@ $stmt = $conn->prepare("SELECT COUNT(name) AS count_products FROM products;");
     $result = $stmt->get_result();
     $row_countries = $result->fetch_assoc();
 
+ $stmt = $conn->prepare("SELECT COUNT(name) AS count_cities FROM city;");
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row_cities = $result->fetch_assoc();
 
 ?>
 <!DOCTYPE html>
@@ -44,7 +49,7 @@ $stmt = $conn->prepare("SELECT COUNT(name) AS count_products FROM products;");
         
         <div class="row g-4 justify-content-center">
        
-            <div class="col-md-5 col-lg-4">
+            <div class="col-md-3 col-lg-3">
                 <a href="index.php" class="text-decoration-none text-dark">
                     <div class="card shadow rounded-4 h-100">
                         <div class="card-body d-flex flex-column align-items-center text-center">
@@ -57,7 +62,7 @@ $stmt = $conn->prepare("SELECT COUNT(name) AS count_products FROM products;");
             </div>
 
 
-            <div class="col-md-5 col-lg-4">
+            <div class="col-md-3 col-lg-3">
                 <a href="user.index.php" class="text-decoration-none text-dark">
                     <div class="card shadow rounded-4 h-100">
                         <div class="card-body d-flex flex-column align-items-center text-center">
@@ -69,13 +74,24 @@ $stmt = $conn->prepare("SELECT COUNT(name) AS count_products FROM products;");
                 </a>
             </div>
 
-            <div class="col-md-5 col-lg-4">
+            <div class="col-md-3 col-lg-3">
                 <a href="country.php" class="text-decoration-none text-dark">
                     <div class="card shadow rounded-4 h-100">
                         <div class="card-body d-flex flex-column align-items-center text-center">
                             <h3 class="card-title mb-3">Countries</h3>
                             <p class="fs-4 fw-bold mb-4">Total Countries: <?php echo $row_countries['count_countries']; ?></p>
                             <img src="india.png" alt="Users" class="img-fluid" style="max-height: 180px;" />
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 col-lg-3">
+                <a href="cities.php" class="text-decoration-none text-dark">
+                    <div class="card shadow rounded-4 h-100">
+                        <div class="card-body d-flex flex-column align-items-center text-center">
+                            <h3 class="card-title mb-3">Cities</h3>
+                            <p class="fs-4 fw-bold mb-4">Total Cities: <?php echo $row_cities['count_cities']; ?></p>
+                            <img src="cities.jpg" alt="Users" class="img-fluid" style="max-height: 180px;" />
                         </div>
                     </div>
                 </a>

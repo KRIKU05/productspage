@@ -20,12 +20,10 @@ $totalRows   = mysqli_fetch_assoc($totalResult)['total'];
 $totalPages  = ceil($totalRows / $limit);
 
 
-$sql = "SELECT * FROM users ORDER BY id ASC LIMIT $offset, $limit";
+$sql = "SELECT * FROM users ORDER BY name ASC LIMIT $offset, $limit";
 $result = mysqli_query($conn, $sql);
 
-// $stmt = $conn->prepare("SELECT * FROM users;"); 
-// $stmt->execute();
-// $result = $stmt->get_result();
+
 ?>
 
 <!DOCTYPE html>
@@ -37,18 +35,20 @@ $result = mysqli_query($conn, $sql);
 </head>
 <body class="bg-light">
 
-<div class="container mt-5">
-    <div class="card shadow p-3">
+<div class="container mt-5" >
+    <div class="card shadow p-3" style="margin-bottom:15px">
        <div class="d-flex justify-content-between align-items-center">
         <h1 class=" flex-grow-1">User Details</h1>
         <a href="newuser.php" class="btn btn-success">Create New</a>
+        &nbsp;
+   <a href="dashboard.php" class="btn btn-secondary">Back</a>
         <!-- <a href="logout.php" class="btn btn-danger">Logout</a> -->
     </div>
 
         <table class="table table-bordered table-hover text-center">
         <thead class="table-dark">
             <tr>
-                <th>ID</th>
+                
                 <th>Name</th>
                 <th>Number</th>
                 <th>Email</th>
@@ -58,8 +58,8 @@ $result = mysqli_query($conn, $sql);
         <tbody>
         <?php while ($row = mysqli_fetch_assoc($result)) { ?>
             <tr>
-                <td><?= $row['id']; ?></td>
-                <td><?= $row['name']; ?></td>
+                
+                <td><img src ="images/<?= $row['pic']; ?>" style="height:20px; width:20px; ">&nbsp;<?= $row['name']; ?></td>
                 <td><?= $row['number'] ?></td>
                 <td><?= $row['email'] ?></td>
                   <td>
@@ -78,20 +78,19 @@ $result = mysqli_query($conn, $sql);
   <ul class="pagination mb-0">
     <li class="page-item <?php if ($page <= 1) echo 'disabled'; ?>">
       <a class="page-link" href="?page=<?= $page-1; ?>">Previous</a>
-    </li>
+    </li>&nbsp;
 
     <?php for ($i = 1; $i <= $totalPages; $i++): ?>
       <li class="page-item <?= ($i == $page) ? 'active' : '' ?>">
         <a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a>
       </li>
-    <?php endfor; ?>
+    <?php endfor; ?>&nbsp;
 
     <li class="page-item <?php if ($page >= $totalPages) echo 'disabled'; ?>">
       <a class="page-link" href="?page=<?= $page+1; ?>">Next</a>
     </li>
   </ul>
 
-   <a href="dashboard.php" class="btn btn-secondary">Back</a>
 </nav>
     
 

@@ -42,6 +42,7 @@ if ($result->num_rows > 0) {
             <p><strong>Name:</strong> <?= $user['name'] ?></p>
             <p><strong>Phone number:</strong> <?= $user['number'] ?></p>
             <p><strong>Email:</strong> <?= $user['email']?></p>
+            <p><strong>Image:</strong><img src="pictures/<?= $user['pic'];?>" style="height:100px; width:100px; "> </p>
  
         </div>
     </div>

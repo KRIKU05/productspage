@@ -17,7 +17,7 @@ $totalResult = mysqli_query($conn, "SELECT COUNT(*) AS total FROM products");
 $totalRows   = mysqli_fetch_assoc($totalResult)['total'];
 $totalPages  = ceil($totalRows / $limit);
 
-$sql = "SELECT * FROM products ORDER BY orderof ASC LIMIT $offset, $limit";
+$sql = "SELECT * FROM products ORDER BY name ASC LIMIT $offset, $limit";
 $result = mysqli_query($conn, $sql);
 ?>
 
@@ -35,7 +35,9 @@ $result = mysqli_query($conn, $sql);
        <div class="d-flex justify-content-between align-items-center">
         <h1 class=" flex-grow-1">Products</h1>
         <a href="create.php" class="btn btn-success">Create New</a>
+        &nbsp;
         <!-- <a href="logout.php" class="btn btn-danger">Logout</a> -->
+           <a href="dashboard.php" class="btn btn-secondary">Back</a>
     </div>
 
     <table class="table table-bordered table-hover text-center">
@@ -61,25 +63,25 @@ $result = mysqli_query($conn, $sql);
         <?php } ?>
         </tbody>
     </table>
-    
+        </div>
    <nav class="d-flex justify-content-between align-items-center">
   <ul class="pagination mb-0">
     <li class="page-item <?php if ($page <= 1) echo 'disabled'; ?>">
       <a class="page-link" href="?page=<?= $page-1; ?>">Previous</a>
-    </li>
+    </li>&nbsp;
 
     <?php for ($i = 1; $i <= $totalPages; $i++): ?>
       <li class="page-item <?= ($i == $page) ? 'active' : '' ?>">
         <a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a>
       </li>
-    <?php endfor; ?>
+    <?php endfor; ?>&nbsp;
 
     <li class="page-item <?php if ($page >= $totalPages) echo 'disabled'; ?>">
       <a class="page-link" href="?page=<?= $page+1; ?>">Next</a>
     </li>
   </ul>
 
-  <a href="dashboard.php" class="btn btn-secondary">Back</a>
+
 </nav>
     </div>
 </div>

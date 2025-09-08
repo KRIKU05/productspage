@@ -5,8 +5,20 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 include "db.php";
-
+$sql = "SELECT * FROM users";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
 $current_user = $_SESSION['user'];
+
+if ($result->num_rows > 0) {
+    $user = $result->fetch_assoc();
+} else {
+    echo "User not found.";
+    exit();
+}
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -17,6 +29,7 @@ $current_user = $_SESSION['user'];
     <title>Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+     <link rel="stylesheet" href="styles.css">
     <style>
         
     </style>
@@ -58,11 +71,12 @@ $current_user = $_SESSION['user'];
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
+                       data-bs-toggle="dropdown" aria-expanded="false"><img src="pictures/<?php echo $_SESSION['pic'];?>" alt="Profile pic" style="height:30px; width:30px" class="rounded-pill">&nbsp;    
                         <?php echo ($_SESSION['name']); ?>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                        <li><a class="dropdown-item" href="profile.php">Profile</a></li>
+                        <li>
+                            <a class="dropdown-item" href="profile.php">Profile</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item text-danger" href="logout.php">Logout</a></li>
                     </ul>

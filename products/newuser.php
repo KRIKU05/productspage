@@ -16,6 +16,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = $_POST["number"];  
     $email = $_POST["email"];
     $password = $_POST["password"];
+    $pic = $_FILES['pic']['name'];
+
+    move_uploaded_file($_FILES['pic']['tmp_name'], 'pictures/' . $pic);
 
     if (empty($name)) { $errors['name'] = "Name is required"; }
     if (empty($phone)) { $errors['number'] = "Phone number is required"; }
@@ -29,8 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $stmt = $conn->prepare("INSERT INTO users (name, number, email, password) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("siss", $name, $phone, $email, $password);
+        $stmt = $conn->prepare("INSERT INTO users (name, number, email, password, pic) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("sisss", $name, $phone, $email, $password, $pic);
 
         if ($stmt->execute()) {
             header("Location: user.index.php");
@@ -43,6 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $conn->close();
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,10 +55,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="card mx-auto mt-5 w-50 p-5 rounded">
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-dark text-white">
+            <div class="d-flex justify-content-between align-items-center">
     <h1 class="text-center">Create Account</h1>
+    <a href="user.index.php" class="btn btn-secondary">Back</a>
+</div>
+</div>
     <div class="card-body">
-        <form method="post" action="">
+<form method="post" action="" enctype="multipart/form-data">
             <div class="mb-3">
                 <input type="text" class="form-control" placeholder="Name" name="name" value="<?= htmlspecialchars($name) ?>">
                 <?php if (isset($errors['name'])) echo "<small class='text-danger'>{$errors['name']}</small>"; ?>
@@ -69,6 +79,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="email" class="form-control" placeholder="Email" name="email">
                 <?php if (isset($errors['email'])) echo "<small class='text-danger'>{$errors['email']}</small>"; ?>
             </div>
+            <div class="mb-3">
+                    <label>User Image</label>
+                    <input type="file" name="pic" class="form-control" required>
+                </div>
 
             <div class="mb-3">
                 <input type="password" class="form-control" placeholder="Enter Password" name="password">
@@ -81,5 +95,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
     </div>
 </div>
+
 </body>
 </html>

@@ -21,7 +21,7 @@ $totalRows   = mysqli_fetch_assoc($totalResult)['total'];
 $totalPages  = ceil($totalRows / $limit);
 
 
-$sql = "SELECT * FROM country ORDER BY id ASC LIMIT $offset, $limit";
+$sql = "SELECT * FROM country ORDER BY name ASC LIMIT $offset, $limit";
 $result = mysqli_query($conn, $sql);
 
 
@@ -35,6 +35,7 @@ $result = mysqli_query($conn, $sql);
     <meta charset="UTF-8">
     <title>View Users</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
 </head>
 <body class="bg-light">
 
@@ -43,6 +44,10 @@ $result = mysqli_query($conn, $sql);
        <div class="d-flex justify-content-between align-items-center">
         <h1 class=" flex-grow-1">Countries</h1>
         <a href="newcountry.php" class="btn btn-success">Create New</a>
+        &nbsp;
+        
+   <a href="dashboard.php" class="btn btn-secondary">Back</a>
+
         <!-- <a href="logout.php" class="btn btn-danger">Logout</a> -->
     </div>
 
@@ -79,20 +84,19 @@ $result = mysqli_query($conn, $sql);
   <ul class="pagination mb-0">
     <li class="page-item <?php if ($page <= 1) echo 'disabled'; ?>">
       <a class="page-link" href="?page=<?= $page-1; ?>">Previous</a>
-    </li>
+    </li>&nbsp;
 
     <?php for ($i = 1; $i <= $totalPages; $i++): ?>
       <li class="page-item <?= ($i == $page) ? 'active' : '' ?>">
         <a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a>
       </li>
-    <?php endfor; ?>
+    <?php endfor; ?>&nbsp;
 
     <li class="page-item <?php if ($page >= $totalPages) echo 'disabled'; ?>">
       <a class="page-link" href="?page=<?= $page+1; ?>">Next</a>
     </li>
   </ul>
 
-   <a href="dashboard.php" class="btn btn-secondary">Back</a>
 </nav>
     
 
