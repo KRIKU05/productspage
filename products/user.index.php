@@ -59,7 +59,7 @@ $result = mysqli_query($conn, $sql);
         <?php while ($row = mysqli_fetch_assoc($result)) { ?>
             <tr>
                 
-                <td><img src ="images/<?= $row['pic']; ?>" style="height:20px; width:20px; ">&nbsp;<?= $row['name']; ?></td>
+                <td><img src ="images/users/<?= $row['pic']; ?>" style="height:20px; width:20px; ">&nbsp;<?= $row['name']; ?></td>
                 <td><?= $row['number'] ?></td>
                 <td><?= $row['email'] ?></td>
                   <td>

@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
     $pic = $_FILES['pic']['name'];
 
-    move_uploaded_file($_FILES['pic']['tmp_name'], 'pictures/' . $pic);
+    move_uploaded_file($_FILES['pic']['tmp_name'], 'images/users/' . $pic);
 
     if (empty($name)) { $errors['name'] = "Name is required"; }
     if (empty($phone)) { $errors['number'] = "Phone number is required"; }
@@ -66,12 +66,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="card-body">
 <form method="post" action="" enctype="multipart/form-data">
             <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Name" name="name" value="<?= htmlspecialchars($name) ?>">
+                <input type="text" class="form-control" placeholder="Name" name="name" >
                 <?php if (isset($errors['name'])) echo "<small class='text-danger'>{$errors['name']}</small>"; ?>
             </div>
 
             <div class="mb-3">
-                <input type="tele" class="form-control" placeholder="Phone Number" name="number">
+                <input type="tel" class="form-control" placeholder="Phone Number" name="number">
                 <?php if (isset($errors['number'])) echo "<small class='text-danger'>{$errors['number']}</small>"; ?>
             </div>
 
@@ -81,7 +81,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="mb-3">
                     <label>User Image</label>
-                    <input type="file" name="pic" class="form-control" required>
+                    <input type="file" name="pic" id="userInput" class="form-control" required>
+                    <img id="userPreview" style="max-width:150px; margin-top:10px; display:none;">
                 </div>
 
             <div class="mb-3">
@@ -95,6 +96,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
     </div>
 </div>
+<script>
 
+document.getElementById('userInput').onchange = evt => {
+    const [file] = evt.target.files;
+    if (file) {
+        const preview = document.getElementById('userPreview');
+        preview.src = URL.createObjectURL(file);
+        preview.style.display = 'block';
+    }
+};
+</script>
 </body>
 </html>

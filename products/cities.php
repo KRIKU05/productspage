@@ -68,7 +68,7 @@ while ($c = mysqli_fetch_assoc($country)) {
                     <td>
                         <?php 
                         $country = $showcountry[$row['country_id']];
-                        $flagPath = "images/" . $country['flag'];
+                        $flagPath = "images/country/" . $country['flag'];
                         ?>
                         <img src="<?= $flagPath ?>" 
                              alt="<?= $country['name']; ?> flag" 

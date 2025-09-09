@@ -35,7 +35,7 @@ $row = $result->fetch_assoc();
         <p><strong>Name:</strong> <?php echo $row['name']; ?></p>
         <p><strong>Status:</strong> <?php echo ($row['status'] ? 'Active' : 'Inactive'); ?></p>
         <p><strong>Flag: </strong>
-       <img src ="images/<?= $row['flag']; ?>" style="height:100px; width:100px; "></p>
+       <img src ="images/country/<?= $row['flag']; ?>" style="height:100px; width:100px; "></p>
         </div>
     </div>
 </div>

@@ -42,10 +42,12 @@ $stmt = $conn->prepare("SELECT COUNT(name) AS count_products FROM products;");
     <title>Dashboard</title>
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" /> -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="main-content">
     <div class="container my-5">
-        <h1 class="mb-4 text-center">Dashboard</h1>
+        <h1 class="mt-5 mb-4 text-center">Dashboard</h1>
         
         <div class="row g-4 justify-content-center">
        
@@ -54,8 +56,8 @@ $stmt = $conn->prepare("SELECT COUNT(name) AS count_products FROM products;");
                     <div class="card shadow rounded-4 h-100">
                         <div class="card-body d-flex flex-column align-items-center text-center">
                             <h3 class="card-title mb-3">Products</h3>
-                            <p class="fs-4 fw-bold mb-4">Total Products: <?php echo $row_products['count_products']; ?></p>
-                            <img src="box.png" alt="Products" class="img-fluid" style="max-height: 180px;" />
+                            <p class="fs-4 fw-bold mb-4">(<?php echo $row_products['count_products']; ?>)</p>
+                            <img src="favicons/product.png" alt="Products" class="img-fluid" style="max-height: 180px;" />
                         </div>
                     </div>
                 </a>
@@ -67,8 +69,8 @@ $stmt = $conn->prepare("SELECT COUNT(name) AS count_products FROM products;");
                     <div class="card shadow rounded-4 h-100">
                         <div class="card-body d-flex flex-column align-items-center text-center">
                             <h3 class="card-title mb-3">Users</h3>
-                            <p class="fs-4 fw-bold mb-4">Total Users: <?php echo $row_users['count_users']; ?></p>
-                            <img src="img_avatar1.png" alt="Users" class="img-fluid" style="max-height: 180px;" />
+                            <p class="fs-4 fw-bold mb-4">(<?php echo $row_users['count_users']; ?>)</p>
+                            <img src="favicons/users.png" alt="Users" class="img-fluid" style="max-height: 180px;" />
                         </div>
                     </div>
                 </a>
@@ -79,8 +81,8 @@ $stmt = $conn->prepare("SELECT COUNT(name) AS count_products FROM products;");
                     <div class="card shadow rounded-4 h-100">
                         <div class="card-body d-flex flex-column align-items-center text-center">
                             <h3 class="card-title mb-3">Countries</h3>
-                            <p class="fs-4 fw-bold mb-4">Total Countries: <?php echo $row_countries['count_countries']; ?></p>
-                            <img src="india.png" alt="Users" class="img-fluid" style="max-height: 180px;" />
+                            <p class="fs-4 fw-bold mb-4">(<?php echo $row_countries['count_countries']; ?>)</p>
+                            <img src="favicons/countries.png" alt="Users" class="img-fluid" style="max-height: 180px;" />
                         </div>
                     </div>
                 </a>
@@ -90,8 +92,8 @@ $stmt = $conn->prepare("SELECT COUNT(name) AS count_products FROM products;");
                     <div class="card shadow rounded-4 h-100">
                         <div class="card-body d-flex flex-column align-items-center text-center">
                             <h3 class="card-title mb-3">Cities</h3>
-                            <p class="fs-4 fw-bold mb-4">Total Cities: <?php echo $row_cities['count_cities']; ?></p>
-                            <img src="cities.jpg" alt="Users" class="img-fluid" style="max-height: 180px;" />
+                            <p class="fs-4 fw-bold mb-4">(<?php echo $row_cities['count_cities']; ?>)</p>
+                            <img src="favicons/city.png" alt="Users" class="img-fluid" style="max-height: 180px;" />
                         </div>
                     </div>
                 </a>
@@ -99,7 +101,7 @@ $stmt = $conn->prepare("SELECT COUNT(name) AS count_products FROM products;");
 
         </div>
     </div>
-
+</div>
 
 </body>
 </html>

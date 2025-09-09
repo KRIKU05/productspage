@@ -63,7 +63,7 @@ $result = mysqli_query($conn, $sql);
         <tbody>
         <?php while ($row = mysqli_fetch_assoc($result)) { ?>
             <tr>
-                <td><img src ="images/<?= $row['flag']; ?>" style="height:20px; width:20px; "></td>
+                <td><img src ="images/country/<?= $row['flag']; ?>" style="height:20px; width:20px; "></td>
                 <td><?= $row['name']; ?></td>
                 <td><?= $row['status'] == 1 ? 'Active' : 'Inactive'; ?></td>
 

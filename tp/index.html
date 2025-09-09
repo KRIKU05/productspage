@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery Todo App</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    #todoList li.done { text-decoration: line-through; color: gray; }
+    button.delete { margin-left: 10px; color: red; }
+  </style>
+</head>
+<body>
+
+  <h2>Todo List</h2>
+
+  <input type="text" id="taskInput" placeholder="Enter a task" />
+  <button id="addTaskBtn">Add Task</button>
+
+  <ul id="todoList"></ul>
+
+  <script>
+    $(function() {
+  
+  $('#addTaskBtn').on('click', function() {
+    const task = $('#taskInput').val().trim();
+
+    if (task !== '') {
+      const newTask = `
+        <li>
+          <span class="taskText">${task}</span>
+          <button class="delete">Delete</button>
+        </li>
+      `;
+      $('#todoList').append(newTask);
+      $('#taskInput').val(''); 
+    }
+  });
+
+
+  $('#todoList').on('click', '.taskText', function() {
+    $(this).parent().toggleClass('done');
+  });
+
+ 
+  $('#todoList').on('click', '.delete', function() {
+    $(this).parent().remove();
+  });
+});
+
+  </script>
+
+</body>
+</html>

@@ -17,7 +17,7 @@ $totalResult = mysqli_query($conn, "SELECT COUNT(*) AS total FROM products");
 $totalRows   = mysqli_fetch_assoc($totalResult)['total'];
 $totalPages  = ceil($totalRows / $limit);
 
-$sql = "SELECT * FROM products ORDER BY name ASC LIMIT $offset, $limit";
+$sql = "SELECT * FROM products ORDER BY id ASC LIMIT $offset, $limit";
 $result = mysqli_query($conn, $sql);
 ?>
 
