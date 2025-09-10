@@ -103,5 +103,7 @@ $stmt = $conn->prepare("SELECT COUNT(name) AS count_products FROM products;");
     </div>
 </div>
 
+
+
 </body>
 </html>

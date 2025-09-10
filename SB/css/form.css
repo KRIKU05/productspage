@@ -1,0 +1,102 @@
+select {
+   -webkit-appearance:none;
+   -moz-appearance:none;
+   -ms-appearance:none;
+   appearance:none;
+   outline:0;
+   box-shadow:none;
+   border:0!important;
+   background: #5c6664;
+   background-image: none;
+   flex: 1;
+   padding: 0 .5em;
+   color:#413f3f;
+   cursor:pointer;
+   font-size: 13px;
+   text-transform: uppercase;
+   font-weight: 500;
+}
+select::-ms-expand {
+   display: none;
+}
+.formselect {
+	padding:10px 25px 10px 10px;
+	font-size:15px;
+	color:#414141;
+	width:100%;
+    font-weight: 400;
+	border:solid 0px #eee9d5;
+	border-radius: 4px;
+	-webkit-appearance: none !important;
+	background: url("../img/select_arrow.png") no-repeat right 10px center #fff;
+	min-height: 45px;
+}
+.hotelinput-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+}
+.destinationsearchfield {
+	border: solid 0px #656564;
+	padding-right:10px;
+	padding-left:10px;
+	font-size: 15px;
+	color:#161616;
+	width:100%;
+	border-radius:12px 0px 0px 12px;
+	background:#fff;
+	height:44px;
+  border-right: 0;
+}
+.destinationsearchfield:focus {
+	outline: none;
+}
+.destinationsearchbtn {
+    background: #fff;
+    width: 40px;
+    border: none;
+    padding: 0px 0px;
+    font-size: 16px;
+    color: #161616;
+    border-radius: 0px 12px 12px 0px;
+    height: 44px;
+    border: solid 0px #656564;
+    border-left: 0;
+}
+.input-group-btn {
+    position: relative;
+    font-size: 0;
+    white-space: nowrap;
+}
+.input-group-btn {
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+.input-group-addon, .input-group-btn, .input-group .form-control {
+    display: table-cell;
+}
+.destinationsearchbtn i{ 
+    color: #7d7977;
+}
+
+
+@media (max-width: 1920px) {
+ 
+}
+@media (max-width: 1600px) {
+ 
+}
+@media (max-width: 1200px) {
+	
+}
+@media (max-width: 992px) {
+	
+}
+@media (max-width: 768px) {
+    
+}
+
+@media (max-width: 575px) {
+   
+}

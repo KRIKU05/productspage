@@ -1,0 +1,222 @@
+/* (A) MATERIAL ICONS */
+.aWrap .svg-inline--fa {
+  color: white !important;
+}
+
+/* (B) WRAPPER */
+.aWrap {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* allow buttons to wrap into another row on small screens */
+  /* flex-wrap: wrap; */
+  width: 245px;
+  padding: 0px;
+  margin: 5px 0;
+  gap: 0.5rem;
+}
+
+.aWrap,
+.aWrap * {
+  box-sizing: border-box;
+}
+
+/* (C) PLAY/PAUSE BUTTON */
+.aPlay {
+  padding: 0;
+  margin: 0;
+  background: 0;
+  border: 0;
+  cursor: pointer;
+  color: #fff;
+}
+.aPlay .aPlayIco{
+  margin-top: 3px;
+}
+
+/* (D) TIME */
+.aCron {
+    font-size: 14px;
+    color: #cbcbcb;
+    margin: 0 3px;
+}
+
+/* (E) RANGE SLIDERS */
+/* (E1) HIDE DEFAULT */
+.aWrap input[type="range"] {
+  appearance: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  width: 70px;
+  padding: 0;
+  margin: 0;
+  background: 0;
+}
+
+.range,
+.range-volume {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.range input,
+.range-volume input {
+  position: relative;
+  z-index: 1;
+}
+
+.range .change-range,
+.range-volume .change-range {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  height: 3px;
+  width: 0px;
+  background-color: #ce1d46;
+  border-radius: 10px 0 0 10px;
+}
+.range .range-volume{
+  position: absolute;
+  left: 0;
+  top: 0px;
+  height: 2px;
+  width: 0px;
+  background-color: #ce1d46;
+  border-radius: 10px 0 0 10px;
+}
+
+.under-ranger {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  height: 2px;
+  width: 100%;
+  background-color: #3c3d43;
+  border-radius: 10px;
+}
+
+.range-volume .under-ranger {
+  height: 4px;
+}
+
+.aWrap input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+}
+
+/* (E2) CUSTOM SLIDER TRACK */
+.aWrap input[type="range"]::-webkit-slider-runnable-track {
+  background: transparent;
+  height: 4px;
+  border-radius: 10px;
+}
+
+/* (E3) CUSTOM SLIDER BUTTON */
+.aWrap input[type="range"]::-webkit-slider-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 0;
+  background: #fff;
+  position: relative;
+  cursor: pointer;
+  margin-top: -3px;
+}
+
+.aWrap input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 0;
+  background: #fff;
+  position: relative;
+  cursor: pointer;
+  margin-top: -3px;
+}
+
+/* (F) VOLUME */
+.aVolIco {
+  margin: 0 10px;
+  cursor: pointer;
+  width: 20px;
+}
+
+input.aVolume {
+  width: 70px !important;
+}
+
+.aVolume::-webkit-slider-runnable-track {
+  height: 10px !important;
+}
+
+.aVolume::-webkit-slider-thumb {
+  margin-top: -3px !important;
+}
+
+.aVolume::-moz-range-thumb {
+  margin-top: -3px !important;
+}
+
+.volume-container {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 1366px) {
+    .aWrap {
+  width: 200px;
+  gap: 0.5rem;
+}
+}
+@media (max-width: 1280px) {
+    .aWrap {
+  width: 200px;
+  gap: 0.5rem;
+}
+.aVolIco {
+    margin: 0 5px;
+    cursor: pointer;
+    width: 18px;
+}
+.aPlay {
+    padding: 0;
+    margin: 0px 0px 0px 10px;
+}
+.aWrap input[type="range"] {
+  width: 50px;
+}
+input.aVolume {
+  width: 50px !important;
+}
+
+}
+@media (max-width: 1024px) {
+    .aWrap {
+  width: 200px;
+  gap: 0.1rem;
+}
+.aWrap input[type="range"] {
+  width: 70px;
+}
+input.aVolume {
+  width: 70px !important;
+}
+
+}
+@media (max-width: 600px) {
+    .aWrap {
+  width: 300px;
+  gap: 0.1rem;
+}
+.aWrap input[type="range"] {
+  width: 70px;
+}
+input.aVolume {
+  width: 70px !important;
+}
+
+}
+
+
