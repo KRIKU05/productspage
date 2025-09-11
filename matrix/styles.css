@@ -19,3 +19,15 @@
     .address-section {
       text-align: left;
     }
+    footer .text-muted {
+  color: #aaa !important; /* Ensure contrast for text */
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto; /* Ensure footer sticks to the bottom of the page */
+}

@@ -51,7 +51,7 @@
       <div class="row mt-3 pt-2">
         <div class="col">
           <hr class="border-secondary opacity-25 mb-2">
-          <p class="text-center mb-0 text-muted small">
+          <p class="text-center mb-0 text-light small">
             &copy; 2025 Matrix. All Rights Reserved.
           </p>
         </div>

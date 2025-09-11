@@ -50,7 +50,7 @@ $result = mysqli_query($conn, $sql);
             </tr>
         </thead>
         <tbody>
-        <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+        
             <tr>
                 <td><?= $row['id']; ?></td>
                 <td><?= $row['name']; ?></td>
@@ -60,7 +60,7 @@ $result = mysqli_query($conn, $sql);
                     <a href="view.php?id=<?= $row['id']; ?>" class="btn btn-info btn-sm">View</a>
                 </td>
             </tr>
-        <?php } ?>
+        
         </tbody>
     </table>
         </div>

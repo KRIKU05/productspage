@@ -1,9 +1,6 @@
 <?php 
 include "header.php";
 ?>
-<?php 
-include "header.php";
-?>
 
 <div style="position: relative; text-align: center; color: white;">
     <img src="matrix.png" alt="Matrix Background" style="width:100%; height:auto; opacity:0.8;">
